@@ -1,6 +1,6 @@
 package Tests;
 
-import GeneticAlgorithm.Individual;
+import Individuals.Individual;
 import Problems.KnapsackProblem;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;

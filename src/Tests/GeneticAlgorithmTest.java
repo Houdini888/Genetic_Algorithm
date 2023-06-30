@@ -2,7 +2,7 @@ package Tests;
 
 import GeneticAlgorithm.GeneticAlgorithm;
 import Problems.KnapsackProblem;
-import GeneticAlgorithm.Individual;
+import Individuals.Individual;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;

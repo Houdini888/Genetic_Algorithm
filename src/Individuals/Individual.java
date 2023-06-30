@@ -1,4 +1,4 @@
-package GeneticAlgorithm;
+package Individuals;
 
 import Problems.KnapsackProblem;
 

@@ -3,7 +3,7 @@ package Tests;
 import Problems.KnapsackProblem;
 import org.junit.jupiter.api.Test;
 
-import GeneticAlgorithm.Individual;
+import Individuals.Individual;
 
 import java.util.Random;
 

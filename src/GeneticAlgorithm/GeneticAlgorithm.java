@@ -1,5 +1,6 @@
 package GeneticAlgorithm;
 
+import Individuals.Individual;
 import Problems.KnapsackProblem;
 
 import java.security.InvalidParameterException;
