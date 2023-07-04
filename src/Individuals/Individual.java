@@ -1,6 +1,7 @@
 package Individuals;
 
 import Problems.KnapsackProblem;
+import Problems.Problem;
 
 import java.security.InvalidParameterException;
 import java.util.Random;
@@ -101,8 +102,8 @@ public class Individual {
 
     }
 
-    public void evaluate(KnapsackProblem knapsackProblem){
-        fitness = knapsackProblem.evaluateGenotype(genotype);
+    public void evaluate(Problem problem){
+        fitness = problem.evaluateGenotype(genotype);
     }
 
     public void printGenotype(int[] genotype){
@@ -119,7 +120,7 @@ public class Individual {
 
     public void printGenotypeAndFitness(){
         printGenotype();
-        System.out.print(" " + String.valueOf(fitness));
+        System.out.print(" " + fitness);
         System.out.println();
     }
 

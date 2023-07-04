@@ -7,7 +7,7 @@ import java.io.IOException;
 import java.security.InvalidParameterException;
 import java.util.ArrayList;
 
-public class KnapsackProblem {
+public class KnapsackProblem extends Problem {
 
     public static class KnapsackItem extends Problem.Item{
         private final double value;
@@ -27,7 +27,7 @@ public class KnapsackProblem {
         }
     }
 
-    private ArrayList<KnapsackItem> itemList;
+    private final ArrayList<KnapsackItem> itemList;
     double backpackSize;
 
     public KnapsackProblem(String filename, double backpackSize){
@@ -39,6 +39,7 @@ public class KnapsackProblem {
         this.backpackSize = backpackSize;
     }
 
+    @Override
     public ArrayList<KnapsackItem> getItemList() {
         return itemList;
     }
@@ -47,6 +48,7 @@ public class KnapsackProblem {
         return backpackSize;
     }
 
+    @Override
     public void loadFromFile(String filename){
         try(BufferedReader reader = new BufferedReader(new FileReader(filename))){
             String line;
@@ -68,8 +70,9 @@ public class KnapsackProblem {
         }
     }
 
+    @Override
     public double evaluateGenotype(int[] genotype){
-        if(genotype.length != itemList.size()){
+        if(genotype.length != getItemList().size()){
             throw new InvalidParameterException("The number of genes does not match list of items");
         }
 

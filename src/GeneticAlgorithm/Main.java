@@ -1,6 +1,7 @@
 package GeneticAlgorithm;
 
 import Problems.KnapsackProblem;
+import Problems.OneMaxProblem;
 
 public class Main {
 
@@ -15,11 +16,29 @@ public class Main {
                 0.5f
         );
 
-        int[] solution = geneticAlgorithm.findSolution(5000);
+        int[] KPsolution = geneticAlgorithm.findSolution(5000);
 
-        for(int gene : solution){
+        for(int gene : KPsolution){
             System.out.print(gene);
         }
+        System.out.println();
+
+        OneMaxProblem oneMaxProblem = new OneMaxProblem("E:\\Projects\\School projects\\Genetic Algorithm Knapsack Problem\\src\\GeneticAlgorithm\\om.txt");
+        geneticAlgorithm = new GeneticAlgorithm(oneMaxProblem,
+                200,
+                0.1f,
+                0.5f
+        );
+
+        int[] OMsolution = geneticAlgorithm.findSolution(1000);
+
+        for(int gene : OMsolution){
+            System.out.print(gene);
+        }
+
+
+
+
 
 
 

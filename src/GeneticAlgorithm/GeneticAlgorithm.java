@@ -2,40 +2,45 @@ package GeneticAlgorithm;
 
 import Individuals.Individual;
 import Problems.KnapsackProblem;
+import Problems.Problem;
 
 import java.security.InvalidParameterException;
 import java.util.ArrayList;
 import java.util.Random;
 
 public class GeneticAlgorithm {
-    private KnapsackProblem knapsackProblem;
+    private Problem problem;
 
     private int popSize;
     private float mutProb;
     private float crossProb;
 
-    private ArrayList<Individual> individuals;
+    private final ArrayList<Individual> individuals;
 
 
-    public GeneticAlgorithm(KnapsackProblem knapsackProblem, int popSize, float mutProb, float crossProb){
+    public GeneticAlgorithm(Problem problem, int popSize, float mutProb, float crossProb){
         if(popSize < 0 || mutProb < 0 || crossProb < 0){
             throw new InvalidParameterException("Invalid algorithm parameters");
         }
 
-        this.knapsackProblem = knapsackProblem;
+        this.problem = problem;
         this.popSize = popSize;
         this.mutProb = mutProb;
         this.crossProb = crossProb;
-        this.individuals = new ArrayList<Individual>();
+        this.individuals = new ArrayList<>();
 
-        int genesNr = knapsackProblem.getItemList().size();
+        populateIndividuals();
+    }
+
+    private void populateIndividuals(){
+        int genesNr = problem.getItemList().size();
         for(int i = 0; i < popSize; i++){
             individuals.add(new Individual(genesNr));
         }
     }
 
-    public KnapsackProblem getKnapsackProblem() {
-        return knapsackProblem;
+    public Problem getProblem() {
+        return problem;
     }
 
     public int getPopSize() {
@@ -52,6 +57,23 @@ public class GeneticAlgorithm {
 
     public ArrayList<Individual> getIndividuals() {
         return individuals;
+    }
+
+    public void setProblem(Problem problem) {
+        this.problem = problem;
+        populateIndividuals();
+    }
+
+    public void setPopSize(int popSize) {
+        this.popSize = popSize;
+    }
+
+    public void setMutProb(float mutProb) {
+        this.mutProb = mutProb;
+    }
+
+    public void setCrossProb(float crossProb) {
+        this.crossProb = crossProb;
     }
 
     public int[] findSolution(int repeats){
@@ -84,7 +106,7 @@ public class GeneticAlgorithm {
 
     public void evaluateIndividuals(){
         for(int i = 0; i < individuals.size(); i++){
-            individuals.get(i).evaluate(knapsackProblem);
+            individuals.get(i).evaluate(problem);
         }
     }
 
